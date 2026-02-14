@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Para 2 grandiosas mujeres ❤️</title>
+
+    <!-- Fuentes externas -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="main-container">
+      <div class="start-overlay" id="startOverlay">
+        <!-- Estrellas de fondo fijas -->
+        <div class="stars-background" id="starsBackground"></div>
+
+        <!-- Contenedor de estrellas fugaces -->
+        <div class="shooting-stars" id="shootingStars"></div>
+
+        <!-- Botón corazón -->
+        <div class="heart-btn" id="startBtn">
+          <i class="bx bxs-heart"></i> <span>Te quiero decir algo...</span>
+        </div>
+      </div>
+
+      <div class="ground-line" id="groundLine"></div>
+
+      <div id="tree-wrapper">
+        <canvas id="treeCanvas" width="600" height="600"></canvas>
+      </div>
+
+      <!-- Contador de tiempo -->
+      <div class="counter-text" id="counterText">
+        <div>El cariño que se les tiene es...</div>
+        <div class="counter-numbers" id="counterNumbers">Calculando...</div>
+      </div>
+
+      <!-- Mensaje romántico -->
+      <div class="message-container" id="messageContainer">
+        <!-- Botón anterior -->
+        <button class="message-nav-btn prev-btn" id="prevBtn" onclick="prevMessage()">
+          <i class="bx bx-chevron-left"></i>
+        </button>
+        
+        <!-- Botón siguiente -->
+        <button class="message-nav-btn next-btn" id="nextBtn" onclick="nextMessage()">
+          <i class="bx bx-chevron-right"></i>
+        </button>
+        
+        <div class="message-title" id="messageTitle">
+          <b>💌 Para Chunita:</b>
+        </div>
+        <div class="message-text" id="messageText">
+          <span id="typewriter" class="typewriter-text"></span
+          ><span class="cursor"></span>
+        </div>
+        <div class="message-signature" id="messageSignature"></div>
+        
+        <!-- Indicadores de mensajes -->
+        <div class="message-indicators" id="messageIndicators">
+          <span class="message-indicator active" onclick="goToMessage(0)"></span>
+          <span class="message-indicator" onclick="goToMessage(1)"></span>
+          <span class="message-indicator" onclick="goToMessage(2)"></span>
+        </div>
+        
+        <!-- Hint de deslizamiento -->
+        <div class="swipe-hint" id="swipeHint">
+          <i class='bx bx-left-arrow-alt'></i>
+          Desliza para ver más mensajes
+          <i class='bx bx-right-arrow-alt'></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Música de fondo -->
+    <audio id="backgroundMusic" loop>
+      <source src="musica/chunita.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <!-- Archivo JavaScript externo -->
+    <script src="script.js"></script>
+  </body>
+</html>
