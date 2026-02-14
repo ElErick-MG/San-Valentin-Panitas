@@ -438,6 +438,35 @@ canvas {
   text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.7);
 }
 
+/* ============================================
+   IMAGEN DE AMIGOS
+   ============================================ */
+.friends-image {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.friends-image.show {
+  opacity: 1;
+}
+
+.friends-image.hide {
+  opacity: 0;
+}
+
+.friends-image img {
+  max-width: 400px;
+  max-height: 400px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+}
+
 .counter-text {
   position: absolute;
   left: 60px;
@@ -600,6 +629,11 @@ canvas {
   .heart-btn span {
     font-size: 16px;
   }
+
+  .friends-image img {
+    max-width: 300px;
+    max-height: 300px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -699,5 +733,10 @@ canvas {
 
   .heart-btn span {
     font-size: 14px;
+  }
+
+  .friends-image img {
+    max-width: 250px;
+    max-height: 250px;
   }
 }

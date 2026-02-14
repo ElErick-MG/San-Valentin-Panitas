@@ -174,6 +174,7 @@ const typewriterElement = document.getElementById("typewriter");
 const counterTextElement = document.getElementById("counterText");
 const counterNumbersElement = document.getElementById("counterNumbers");
 const bgMusic = document.getElementById("backgroundMusic");
+const friendsImage = document.getElementById("friendsImage");
 
 // Configurar volumen inicial
 bgMusic.volume = 0.5; // 50% de volumen
@@ -274,6 +275,10 @@ startBtn.addEventListener("click", () => {
   // Crecer el árbol
   setTimeout(() => {
     initTree();
+    // Mostrar imagen de amigos con fade in
+    if (friendsImage) {
+      friendsImage.classList.add("show");
+    }
   }, 1000);
 });
 
@@ -345,7 +350,7 @@ function growBranch(x, y, len, angle, width) {
       createHeartLeaf(endX, endY);
       if (!isTreeBuilt) {
         isTreeBuilt = true;
-        setTimeout(startPhaseThree, 5000);
+        setTimeout(startPhaseThree, 3000);
       }
       return;
     }
@@ -416,25 +421,34 @@ function startPhaseThree() {
     startTimer();
 
     setTimeout(() => {
-      if (messageContainer) messageContainer.classList.add("visible");
-      updateMessageIndicators(); // Inicializar indicadores
-      typeWriterEffect();
-      startFallingHearts();
-      startBackgroundPetals();
+      // Ocultar imagen de amigos antes de mostrar el mensaje
+      if (friendsImage) {
+        friendsImage.classList.remove("show");
+        friendsImage.classList.add("hide");
+      }
       
-      // Ocultar hint automáticamente después de 5 segundos
+      // Mostrar mensaje después de que la imagen desaparezca
       setTimeout(() => {
-        if (!hasSwipedOnce) {
-          const swipeHint = document.getElementById("swipeHint");
-          if (swipeHint) {
-            swipeHint.style.opacity = "0";
-            setTimeout(() => {
-              swipeHint.style.display = "none";
-            }, 500);
+        if (messageContainer) messageContainer.classList.add("visible");
+        updateMessageIndicators(); // Inicializar indicadores
+        typeWriterEffect();
+        startFallingHearts();
+        startBackgroundPetals();
+        
+        // Ocultar hint automáticamente después de 5 segundos
+        setTimeout(() => {
+          if (!hasSwipedOnce) {
+            const swipeHint = document.getElementById("swipeHint");
+            if (swipeHint) {
+              swipeHint.style.opacity = "0";
+              setTimeout(() => {
+                swipeHint.style.display = "none";
+              }, 500);
+            }
           }
-        }
-      }, 5000);
-    }, 3000);
+        }, 5000);
+      }, 1000); // Esperar 1s para que la imagen desaparezca
+    }, 2000); // Reducido de 3000 a 2000 para dar tiempo a la imagen
   }, 2500);
 }
 
